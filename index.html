@@ -23,14 +23,13 @@ a:focus-visible{outline:2px solid currentColor;outline-offset:4px}
 .settle{animation:settle .8s ease-out 1.5s both}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rise,.settle{animation:none}}
 
-/* 경력 계단선 */
-#career>div>div{position:relative;padding-top:22px}
-#career>div>div::before{content:"";position:absolute;left:0;top:0;width:100%;height:2px;background:#101B3B;transform-origin:left}
+/* 경력 구분선 */
+#career>div>div{position:relative;padding-top:clamp(20px,1.8vw,32px)}
+#career>div>div::before{content:"";position:absolute;left:0;top:0;width:100%;height:1px;background:#C4CAD6;transform-origin:left}
 @media (min-width:1180px){
 #career>div>div:not(:last-child)::before{width:calc(100% + clamp(32px,4vw,80px))}
-#career>div>div:not(:last-child)::after{content:"";position:absolute;right:calc(clamp(32px,4vw,80px) * -1);top:calc((100vw - 1100px) * -0.12);width:2px;height:calc((100vw - 1100px) * 0.12 + 2px);background:#101B3B;transform-origin:bottom}
-#career>div>div:nth-child(2){--b:.8s}
-#career>div>div:nth-child(3){--b:1.6s}
+#career>div>div:nth-child(2){--b:.22s;--l:.45s}
+#career>div>div:nth-child(3){--b:.44s;--l:.9s}
 }
 
 /* 스크롤 등장 모션 */
@@ -49,10 +48,8 @@ html.motion-on #company.in{clip-path:inset(0 0 0 0)}
 html.motion-on #company>div>div{opacity:0;transform:translateY(18px);transition:opacity .8s ease .35s,transform 1s cubic-bezier(.2,.75,.2,1) .35s}
 html.motion-on #company>div>div+div{transition-delay:.5s}
 html.motion-on #company.in>div>div{opacity:1;transform:none}
-html.motion-on #career>div>div::before{transform:scaleX(0);transition:transform .6s cubic-bezier(.65,0,.35,1) var(--b,0s)}
-html.motion-on #career>div>div::after{transform:scaleY(0);transition:transform .2s ease-out calc(var(--b,0s) + .6s)}
+html.motion-on #career>div>div::before{transform:scaleX(0);transition:transform .45s linear var(--l,0s)}
 html.motion-on #career>div>div.in::before{transform:scaleX(1)}
-html.motion-on #career>div>div.in::after{transform:scaleY(1)}
 html.motion-on #career>div>div>p{transition:opacity .6s ease calc(var(--b,0s) + .2s),clip-path 1s cubic-bezier(.2,.75,.2,1) calc(var(--b,0s) + .2s),transform 1s cubic-bezier(.2,.75,.2,1) calc(var(--b,0s) + .2s)}
 html.motion-on #career>div>div.in>p{opacity:1;clip-path:inset(-20% -4% -20% -4%);transform:none}
 html.motion-on #career>div>div>h3,html.motion-on #career>div>div>div>div{opacity:0;transform:translateY(14px);transition:opacity .7s ease var(--d,0s),transform .8s cubic-bezier(.2,.75,.2,1) var(--d,0s)}
@@ -90,7 +87,7 @@ html.motion-on #areas>div>div.in:hover p{color:#101B3B}
 
 <header id="top" style="min-height: clamp(560px, 56.25vw, 1080px); max-width: 1800px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 80px) clamp(40px, 3.6vw, 72px); box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; gap: 40px">
 <nav aria-label="페이지 메뉴" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 32px; padding: 18px 0">
-<a href="#top" style="padding: 10px 0; font-weight: 500; text-decoration: none">오성경</a>
+<a href="#top" style="padding: 10px 0; font-weight: 500; text-decoration: none">오성경 | 묘묘</a>
 <div style="display: flex; flex-wrap: wrap; gap: 0 clamp(16px, 2.2vw, 44px)">
 <a href="#areas" style="padding: 10px 0; text-decoration: none">강의 분야</a>
 <a href="#company" style="padding: 10px 0; text-decoration: none">회사</a>
@@ -106,7 +103,7 @@ html.motion-on #areas>div>div.in:hover p{color:#101B3B}
 </h1>
 <div class="settle" style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 28px 64px">
 <div style="flex: 1 1 320px; min-width: 0">
-<p style="margin: 0; font-size: clamp(26px, 2.5vw, 50px); font-weight: 400; line-height: 1.25; letter-spacing: -0.02em">오성경 (묘묘)</p>
+<p style="margin: 0; font-size: clamp(26px, 2.5vw, 50px); font-weight: 400; line-height: 1.25; letter-spacing: -0.02em">오성경 | 묘묘</p>
 <p style="margin: 6px 0 0; color: #5A6480">AI 교육 강사, 그로우아키텍처 대표</p>
 </div>
 <ul style="flex: 0 1 780px; min-width: 0; list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 3px; line-height: 1.5">
@@ -152,11 +149,11 @@ html.motion-on #areas>div>div.in:hover p{color:#101B3B}
 <h2 style="margin: 0; font-size: 1em; font-weight: 500">경력</h2>
 <div style="display: flex; flex-wrap: wrap; gap: 56px clamp(32px, 4vw, 80px); margin-top: clamp(28px, 3vw, 56px)">
 
-<div style="flex: 1 1 320px; min-width: 0; margin-top: max(0px, calc((100vw - 1100px) * 0.24))">
+<div style="flex: 1 1 320px; min-width: 0">
 <p style="margin: 0; font-size: clamp(38px, 4.4vw, 88px); font-weight: 300; line-height: 1.1; letter-spacing: -0.03em">2008</p>
 <h3 style="margin: 12px 0 0; font-size: 1em; font-weight: 500; color: #5A6480">코딩·디지털 교육, 2008 ~ 2020</h3>
 <div style="display: flex; flex-direction: column; gap: 22px; margin-top: clamp(28px, 2.6vw, 48px)">
-<div><p style="margin: 0; font-weight: 500">초등학교 방과후학교 강사</p><p style="margin: 2px 0 0; color: #5A6480">컴퓨터 활용, 코딩, IT 자격증, 창의 블록 교육 (서울·경기 지역 초등학교)</p></div>
+<div><p style="margin: 0; font-weight: 500">초등학교 방과후학교 강사</p><p style="margin: 2px 0 0; color: #5A6480">컴퓨터 활용, 코딩, IT 자격증, 창의 블록 교육<br>서울·경기 지역 초등학교</p></div>
 <div><p style="margin: 0; font-weight: 500">EBS잡스쿨 강사</p><p style="margin: 2px 0 0; color: #5A6480">서울지역 중학교 자유학기제 아두이노·엔트리 코딩 교육</p></div>
 <div><p style="margin: 0; font-weight: 500">유아교육 콘텐츠 연구소</p><p style="margin: 2px 0 0; color: #5A6480">유아 교재 콘텐츠 개발, 전국 지사 사업 설명회</p></div>
 <div><p style="margin: 0; font-weight: 500">코딩 교육 기업 교육팀</p><p style="margin: 2px 0 0; color: #5A6480">코딩 교재 개발, 교사 연수 및 양성, 민간자격 교육·검정 관리</p></div>
@@ -164,7 +161,7 @@ html.motion-on #areas>div>div.in:hover p{color:#101B3B}
 </div>
 </div>
 
-<div style="flex: 1 1 320px; min-width: 0; margin-top: max(0px, calc((100vw - 1100px) * 0.12))">
+<div style="flex: 1 1 320px; min-width: 0">
 <p style="margin: 0; font-size: clamp(38px, 4.4vw, 88px); font-weight: 300; line-height: 1.1; letter-spacing: -0.03em">2020</p>
 <h3 style="margin: 12px 0 0; font-size: 1em; font-weight: 500; color: #5A6480">기획과 운영, 2020 ~ 2025</h3>
 <div style="display: flex; flex-direction: column; gap: 22px; margin-top: clamp(28px, 2.6vw, 48px)">
