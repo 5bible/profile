@@ -89,9 +89,31 @@ html.motion-on #areas>div>div.in:hover p{color:#101B3B}
 #top h1{animation:drift linear both;animation-timeline:scroll();animation-range:0 90vh}
 }
 }
+/* 문의 버튼과 메일 폼 */
+.cbtn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;box-sizing:border-box;border-radius:999px;font:inherit;font-size:.95em;font-weight:500;line-height:1;cursor:pointer;text-decoration:none;transition:background-color .25s ease,border-color .25s ease,color .25s ease}
+.cbtn svg{width:18px;height:18px;flex:none}
+.cbtn-fill{background:#FFFFFF;border:1px solid #FFFFFF;color:#101B3B}
+.cbtn-fill[aria-expanded="true"]{background:#F4A57A;border-color:#F4A57A;color:#101B3B}
+@media (hover:hover){.cbtn-fill:hover{background:#F4A57A;border-color:#F4A57A;color:#101B3B}.cbtn-line:hover{background:rgba(255,255,255,.1);border-color:#FFFFFF;color:#FFFFFF}.cbtn-accent:hover{background:#FFFFFF;border-color:#FFFFFF;color:#101B3B}}
+.cbtn-line{background:transparent;border:1px solid rgba(255,255,255,.55);color:#FFFFFF}
+.cbtn-accent{background:#F4A57A;border:1px solid #F4A57A;color:#101B3B;padding:0 32px}
+.cbtn:disabled{opacity:.6;cursor:progress}
+.cbtn:focus-visible{outline:2px solid #F4A57A;outline-offset:3px}
+#mail-panel{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .55s cubic-bezier(.2,.75,.2,1),opacity .35s ease}
+#mail-panel>div{overflow:hidden;min-height:0;visibility:hidden;transition:visibility 0s linear .55s}
+#mail-panel.open{grid-template-rows:1fr;opacity:1}
+#mail-panel.open>div{visibility:visible;transition-delay:0s}
+.mf-field{min-width:0}
+.mf-field label{display:block;margin-bottom:8px;font-size:.88em;color:#C9D0DE}
+.mf-field input,.mf-field textarea{display:block;width:100%;box-sizing:border-box;padding:14px 16px;border:1px solid #3B4A70;border-radius:10px;background:rgba(255,255,255,.05);color:#FFFFFF;font:inherit;line-height:1.5;transition:border-color .2s ease,background-color .2s ease,box-shadow .2s ease}
+.mf-field textarea{min-height:150px;resize:vertical}
+.mf-field input::placeholder,.mf-field textarea::placeholder{color:#8C97B2}
+.mf-field input:focus,.mf-field textarea:focus{outline:none;border-color:#F4A57A;background:rgba(255,255,255,.08);box-shadow:0 0 0 3px rgba(244,165,122,.25)}
+@media (prefers-reduced-motion:reduce){.cbtn,#mail-panel,#mail-panel>div,.mf-field input,.mf-field textarea{transition:none}}
+
 @media print{.progress{display:none}html.motion-on *{opacity:1!important;clip-path:none!important;transform:none!important}}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfilePage","url":"https://5bible.github.io/profile/","name":"오성경(묘묘) 강사 프로필","inLanguage":"ko","mainEntity":{"@type":"Person","name":"오성경","alternateName":"묘묘","jobTitle":"AI 교육 강사","description":"AI 교육 강사 오성경(묘묘)의 프로필입니다. 시니어·중장년 AI 디지털 리터러시, 학부모 AI 리터러시, 커리어 전환 AI 활용, PBL 기반 생성형 AI 실무교육과 교사·강사 양성 강의를 합니다.","url":"https://5bible.github.io/profile/","image":"https://5bible.github.io/profile/og-image.png","email":"mailto:holybible.oh@gmail.com","worksFor":{"@type":"Organization","name":"그로우아키텍처","alternateName":"Grow Architecture"},"knowsAbout":["AI 리터러시","디지털 리터러시","생성형 AI 교육","PBL 교육","코딩 교육"]}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfilePage","url":"https://5bible.github.io/profile/","name":"오성경(묘묘) 강사 프로필","inLanguage":"ko","mainEntity":{"@type":"Person","name":"오성경","alternateName":"묘묘","jobTitle":"AI 교육 강사","description":"AI 교육 강사 오성경(묘묘)의 프로필입니다. 시니어·중장년 AI 디지털 리터러시, 학부모 AI 리터러시, 커리어 전환 AI 활용, PBL 기반 생성형 AI 실무교육과 교사·강사 양성 강의를 합니다.","url":"https://5bible.github.io/profile/","image":"https://5bible.github.io/profile/og-image.png","worksFor":{"@type":"Organization","name":"그로우아키텍처","alternateName":"Grow Architecture"},"knowsAbout":["AI 리터러시","디지털 리터러시","생성형 AI 교육","PBL 교육","코딩 교육"]}}</script>
 </head>
 <body>
 <div style="width: 100%; background: #FFFFFF; color: #101B3B; font-family: 'Pretendard Variable', Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size: clamp(16px, 1.05vw, 20px); line-height: 1.6; word-break: keep-all; box-sizing: border-box">
@@ -116,7 +138,7 @@ html.motion-on #areas>div>div.in:hover p{color:#101B3B}
 <div class="settle" style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 28px 64px">
 <div style="flex: 1 1 320px; min-width: 0">
 <h2 style="margin: 0; font-size: clamp(23px, 1.8vw, 36px); font-weight: 400; line-height: 1.25; letter-spacing: -0.02em">오성경 | 묘묘</h2>
-<p style="margin: 6px 0 0; color: #5A6480">AI 교육 강사 · 그로우아키텍처 대표</p>
+<p style="margin: 6px 0 0; color: #5A6480">AI · 평생교육 · 디지털교육 · 그로우아키텍처 대표</p>
 </div>
 <ul style="flex: 0 1 780px; min-width: 0; list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 3px; line-height: 1.5">
 <li>2008년 초등학교 컴퓨터 교실에서 디지털 교육 시작</li>
@@ -207,15 +229,90 @@ html.motion-on #areas>div>div.in:hover p{color:#101B3B}
 </section>
 
 <section id="contact" style="background: #101B3B; color: #FFFFFF">
-<div style="max-width: 1800px; margin: 0 auto; padding: clamp(24px, 2.2vw, 40px) clamp(16px, 4vw, 80px); box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; gap: 0 32px">
+<div style="max-width: 1800px; margin: 0 auto; padding: clamp(28px, 2.6vw, 48px) clamp(16px, 4vw, 80px); box-sizing: border-box">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px 32px">
 <h2 style="margin: 0; font-size: 1em; font-weight: 500">문의</h2>
-<a href="mailto:holybible.oh@gmail.com" style="display: inline-block; padding: 10px 0; color: #FFFFFF; font-weight: 400; text-decoration: underline; text-underline-offset: 0.22em; overflow-wrap: anywhere">holybible.oh@gmail.com</a>
-<a href="https://open.kakao.com/o/su9Mx4Kh" target="_blank" rel="noopener noreferrer" style="display: inline-block; padding: 10px 0; color: #FFFFFF; font-weight: 400; text-decoration: underline; text-underline-offset: 0.22em">카카오톡 오픈채팅</a>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<button type="button" class="cbtn cbtn-fill" id="mail-toggle" aria-expanded="false" aria-controls="mail-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m4 7 8 6 8-6"></path></svg>메일 보내기</button>
+<a class="cbtn cbtn-line" href="https://open.kakao.com/o/su9Mx4Kh" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4.5c-4.97 0-9 3.13-9 7 0 2.48 1.66 4.66 4.16 5.9L6.5 20.5l3.66-2.17c.6.09 1.21.14 1.84.14 4.97 0 9-3.13 9-7s-4.03-7-9-7Z"></path></svg>카카오톡 오픈채팅</a>
+</div>
+</div>
+<div id="mail-panel">
+<div>
+<form id="mail-form" style="max-width: 880px; padding-top: clamp(24px, 2.4vw, 40px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 18px 20px">
+<input type="hidden" name="access_key" value="e3a2a408-391b-4f72-8b50-2c6f4d96a02d">
+<input type="hidden" name="from_name" value="오성경 강사 프로필">
+<input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display: none">
+<div class="mf-field"><label for="mf-name">이름 또는 기관명</label><input id="mf-name" name="name" type="text" required="" autocomplete="name" maxlength="80"></div>
+<div class="mf-field"><label for="mf-email">회신받을 이메일</label><input id="mf-email" name="email" type="email" required="" autocomplete="email" maxlength="120"></div>
+<div class="mf-field" style="grid-column: 1 / -1"><label for="mf-message">문의 내용</label><textarea id="mf-message" name="message" required="" maxlength="3000" placeholder="강의 주제, 대상, 희망 일정 등을 적어 주세요."></textarea></div>
+<div style="grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px">
+<button type="submit" class="cbtn cbtn-accent" id="mail-submit">보내기</button>
+<p id="mail-status" role="status" aria-live="polite" style="margin: 0; font-size: 0.92em; color: #AEB7CA">보내주신 이메일은 회신에만 사용합니다.</p>
+</div>
+</form>
+</div>
+</div>
 </div>
 </section>
 </main>
 </div>
 <script>
+(function () {
+    const toggle = document.getElementById('mail-toggle');
+    const panel = document.getElementById('mail-panel');
+    const form = document.getElementById('mail-form');
+    const status = document.getElementById('mail-status');
+    const submit = document.getElementById('mail-submit');
+    if (!toggle || !panel || !form || !status || !submit || toggle.dataset.ready) return;
+    toggle.dataset.ready = '1';
+    panel.inert = true;
+    const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const say = (text, color) => { status.textContent = text; status.style.color = color; };
+    const setOpen = (open) => {
+      panel.classList.toggle('open', open);
+      panel.inert = !open;
+      toggle.setAttribute('aria-expanded', String(open));
+      if (open) {
+        window.setTimeout(() => {
+          document.getElementById('mf-name').focus({ preventScroll: true });
+          panel.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'nearest' });
+        }, 160);
+      }
+    };
+    toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (form.elements.botcheck.checked) return;
+      const data = Object.fromEntries(new FormData(form));
+      delete data.botcheck;
+      if (!data.access_key || data.access_key.indexOf('YOUR_') === 0) {
+        say('아직 발송 설정 전이에요. 키를 연결하면 실제로 보내져요.', '#F4A57A');
+        return;
+      }
+      data.subject = '[강사 프로필] ' + data.name + '님의 문의';
+      const label = submit.textContent;
+      submit.disabled = true;
+      submit.textContent = '보내는 중…';
+      say('문의를 보내고 있어요.', '#AEB7CA');
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const out = await res.json().catch(() => ({}));
+        if (!res.ok || !out.success) throw new Error(out.message || 'failed');
+        form.reset();
+        say('문의가 전달되었습니다. 확인 후 회신드릴게요.', '#9FE3BE');
+      } catch (err) {
+        say('전송하지 못했어요. 잠시 후 다시 시도하시거나 카카오톡 오픈채팅으로 연락해 주세요.', '#FFB4A8');
+      } finally {
+        submit.disabled = false;
+        submit.textContent = label;
+      }
+    });
+})();
 (function () {
   if (!('IntersectionObserver' in window)) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
